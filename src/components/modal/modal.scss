@@ -8,12 +8,12 @@
   position: fixed;
   z-index: 5;
   max-height: 100vh;
-  left: 2.5%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   @include flex(column);
   @include mq('tablet', min) {
-    top: 75px;
     width: 760px;
-    left: calc(50% - 380px);
   }
   &-header {
     padding: 10px 0;
@@ -28,7 +28,7 @@
       right: 13.38px;
     }
     @include mq('tablet', min) {
-      gap: 40px;
+      gap: 70px;
       padding: 10px 10px;
     }
     span {
