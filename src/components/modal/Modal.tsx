@@ -3,7 +3,11 @@ import ReactDom from 'react-dom';
 import './modal.scss';
 import calendar from '../../assets/icons/calendar.png';
 
-export const Modal = ({ setOpen, children }) => {
+interface IModal {
+  setOpen: (open: boolean) => void,
+  children: React.ReactNode
+}
+export const Modal = ({ setOpen, children }: IModal) => {
   const close = () => {
     setOpen(false);
   }
@@ -24,6 +28,6 @@ export const Modal = ({ setOpen, children }) => {
           </div>
         </div>
       </>,
-    document.getElementById('app-modal'))
+    document.getElementById('app-modal') as HTMLElement)
   );
 }

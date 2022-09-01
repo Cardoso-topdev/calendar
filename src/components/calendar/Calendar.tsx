@@ -5,25 +5,29 @@ import {
   subMonths
 } from 'date-fns';
 import { setYear } from 'date-fns/esm';
-
 import { WeekDays } from './week-days';
 import { Month } from './month';
+import { IEvent } from '../../types/calendar';
 import prev from '../../assets/icons/prev.png';
 import next from '../../assets/icons/next.png';
 import './calendar.scss';
 
-export const Calendar = ({ years, events, setOpen }) => {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+interface ICalendarProps {
+  years: Array<number>,
+  events: IEvent
+}
+export const Calendar = ({ years, events }: ICalendarProps) => {
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
-  const nextMonth = () => {
+  const nextMonth: () => void = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   }
 
-  const prevMonth = () => {
+  const prevMonth: () => void = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
   }
 
-  const jumpToYear = (year) => {
+  const jumpToYear: (year: number) => void = (year: number) => {
     setCurrentMonth(setYear(currentMonth, year));
   }
   
