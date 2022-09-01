@@ -10,15 +10,15 @@ import './App.scss';
 function App() {
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [eventData, setEventData] = useState<EventListType>({} as EventListType);
+  const [eventData, setEventData] = useState<EventListType>();
   const [years, SetYears] = useState<Array<number>>([]);
 
   useEffect(() => {
     const fetchEventData = async () => {
       setIsLoading(true);
       const data = await getEventData();
-      setEventData(data as EventListType);
-      SetYears(getAvailableYears(data as EventListType));
+      setEventData(data);
+      SetYears(getAvailableYears(data));
       setIsLoading(false);
     };
 

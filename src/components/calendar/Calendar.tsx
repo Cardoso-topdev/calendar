@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   format,
   addMonths,
@@ -7,27 +7,30 @@ import {
 import { setYear } from 'date-fns/esm';
 import { WeekDays } from './week-days';
 import { Month } from './month';
-import { EventListType } from '../../types/calendar';
+import { EventListType, EventType } from '../../types/calendar';
 import prev from '../../assets/icons/prev.png';
 import next from '../../assets/icons/next.png';
 import './calendar.scss';
 
 interface ICalendarProps {
   years: Array<number>,
-  events: EventListType
+  events?: EventListType
 }
 export const Calendar = ({ years, events }: ICalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
+  const eventKey: string = `${currentMonth.getFullYear()}-${String(currentMonth.getMonth() + 1).padStart(2, '0')}`;
+  const currentMonthEvent: EventType | undefined = events?.[eventKey];
+
   const nextMonth: () => void = () => {
     const nextMonth: Date = addMonths(currentMonth, 1);
-    if (nextMonth > new Date(events.last)) return;
+    if (!events || nextMonth > new Date(events.last)) return;
     setCurrentMonth(nextMonth);
   }
 
   const prevMonth: () => void = () => {
     const prevMonth: Date = subMonths(currentMonth, 1);
-    if (prevMonth < new Date(events.first)) return;
+    if (!events || prevMonth < new Date(events.first)) return;
     setCurrentMonth(prevMonth);
   }
 
@@ -45,7 +48,7 @@ export const Calendar = ({ years, events }: ICalendarProps) => {
           <tbody>
             <Month
               month={currentMonth}
-              events={events} />
+              event={currentMonthEvent} />
           </tbody>
         </table>
       </div>

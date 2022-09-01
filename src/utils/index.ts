@@ -9,3 +9,11 @@ export const getAvailableYears = (data: EventListType): Array<number> => {
   }
   return years;
 }
+
+export const filterCellData = (data: number | undefined): number | string => {
+  const MAX = 9999;
+  const MIN = 0;
+  if (!data || data < MIN) return ''
+  if (data > MAX) return MAX
+  return data;
+}

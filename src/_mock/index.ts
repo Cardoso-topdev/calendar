@@ -1,8 +1,9 @@
+import { EventListType } from '../types/calendar';
 import eventData from './db.json';
 
-export const getEventData = () => new Promise((resolve) => {
+export const getEventData = () => new Promise<EventListType>((resolve) => {
   setTimeout(() => {
     const { data } = eventData;
-      resolve(data);
-  }, 1000);
+      resolve(data as unknown as EventListType);
+  }, 3000);
 });

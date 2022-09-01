@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import './modal.scss';
 import calendar from '../../assets/icons/calendar.png';
+import './modal.scss';
 
 interface IModal {
   setOpen: (open: boolean) => void,
