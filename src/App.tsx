@@ -28,20 +28,20 @@ function App() {
   return (
     <div className="App">
       {
-        isLoading
-          ? 'Loading...'
-          : <>
-              <img src={calendar} alt="calendar" onClick={() => setOpen(true)} />
-              {open && (
-                <Modal
-                  setOpen={setOpen}
-                >
-                  <ModalContext.Provider value={{ setOpen }}>
-                    <Calendar events={eventData} years={years} />
-                  </ModalContext.Provider>
-                </Modal>
-              )}
+        !isLoading && (
+          <>
+            <img src={calendar} alt="calendar" onClick={() => setOpen(true)} />
+            {open && (
+              <Modal
+                setOpen={setOpen}
+              >
+                <ModalContext.Provider value={{ setOpen }}>
+                  <Calendar events={eventData} years={years} />
+                </ModalContext.Provider>
+              </Modal>
+            )}
           </>
+        )
       }
     </div>
   );
