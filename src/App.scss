@@ -1,6 +1,13 @@
+@import "./assets/scss/variables";
+@import "./assets/scss/functions";
+@import "./assets/scss/mixins";
+
 .App {
+  @include flex(row, center);
   img {
-    margin: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
     &:hover {
       cursor: pointer;
     }

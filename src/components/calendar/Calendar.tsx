@@ -20,11 +20,15 @@ export const Calendar = ({ years, events }: ICalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
   const nextMonth: () => void = () => {
-    setCurrentMonth(addMonths(currentMonth, 1));
+    const nextMonth: Date = addMonths(currentMonth, 1);
+    if (nextMonth > new Date(events.last as string)) return;
+    setCurrentMonth(nextMonth);
   }
 
   const prevMonth: () => void = () => {
-    setCurrentMonth(subMonths(currentMonth, 1));
+    const prevMonth: Date = subMonths(currentMonth, 1);
+    if (prevMonth < new Date(events.first as string)) return;
+    setCurrentMonth(prevMonth);
   }
 
   const jumpToYear: (year: number) => void = (year: number) => {
