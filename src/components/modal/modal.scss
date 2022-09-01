@@ -1,0 +1,69 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/functions";
+@import "../../assets/scss/mixins";
+
+.modal {
+  width: 95%;
+  background-color: $black;
+  position: fixed;
+  z-index: 5;
+  max-height: 100vh;
+  left: 2.5%;
+  @include flex(column);
+  @include mq('tablet', min) {
+    top: 75px;
+    width: 760px;
+    left: calc(50% - 380px);
+  }
+  &-header {
+    padding: 10px 0;
+    @include flex(row, true, 30px);
+    justify-content: center;
+    div {
+      @include flex(row, true, 5px)
+    }
+    @include mq('phablet', min) {
+      position: absolute;
+      top: 10.39px;
+      right: 13.38px;
+    }
+    @include mq('tablet', min) {
+      gap: 40px;
+      padding: 10px 10px;
+    }
+    span {
+      color: $white;
+      font-weight: 700;
+      @include body();
+    }
+    i {
+      display: none;
+      color: $white;
+      font-size: 20px;
+      @include mq('phablet', min) {
+        display: block;
+      }
+      @include mq('tablet', min) {
+        top: 10.39px;
+        right: 23.38px;
+        font-size: 35px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &-footer {
+    @include flex(row, center);
+  }
+}
+
+.modal-shadow {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  background-color: $black;
+  opacity: 0.5;
+  z-index: 4;
+}

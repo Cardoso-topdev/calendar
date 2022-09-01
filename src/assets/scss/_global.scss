@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu";
+  margin: 0;
+}
+
+.desktop {
+  visibility: hidden;
+  height: 0;
+  @include mq('phablet', min) {
+    visibility: visible;
+    height: auto;
+  }
+}
+.mobile {
+  visibility: visible;
+  height: auto;
+  @include mq('phablet', min) {
+    visibility: hidden;
+    height: 0;
+  }
+}

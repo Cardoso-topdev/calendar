@@ -1,0 +1,60 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/functions";
+@import "../../../assets/scss/mixins";
+
+.date-container {
+  width: fs(48px, 65px);
+  height: fs(54px, 65px);
+  @include mq('desktop', min) {
+    width: 65px;
+    height: 65px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &__number {
+    background-color: $gray;
+    color: $white;
+    text-align: center;
+    span {
+      font-weight: 700;
+      @include body();
+    }
+  }
+  &__codes {
+    @include flex(row, false, 3px);
+    background-color: $black;
+    &__left {
+      flex-basis: 50%;
+      text-align: end;
+    }
+    &__right {
+      flex-basis: 50%;
+      text-align: start;
+    }
+    span {
+      font-weight: 700;
+      display: block;
+      margin: 0;
+      @include smallText();
+      &.time-lapse {
+        color: $green;
+      }
+      &.comments {
+        color: $light-blue;
+      }
+      &.guest-uploads {
+        color: $light-pink;
+      }
+      &.events {
+        color: $light-red;
+      }
+      &.liked-by-me {
+        color: $light-yellow;
+      }
+      &.liked {
+        color: $light-gray;
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if ($type == min) {
+      $width: $width + 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+// flex: row
+@mixin flex($direction: row, $center: false, $gap: 0) {
+  display: flex;
+  @if ($direction == row) {
+    flex-direction: row;
+  } @else {
+    flex-direction: column;
+  }
+  gap: $gap;
+  @if ($center) {
+    align-items: center;
+  }
+}
+
+// Typography mixins
+@mixin heading() {
+  font-size: fs(16px, 20px);
+  line-height: fs(18.38px, 22.98px);
+  @include mq('desktop', min) {
+    font-size: 20px;
+    line-height: 22.98px;
+  }
+}
+
+@mixin largeText() { 
+  font-size: fs(16px, 18px);
+  line-height: fs(18.38px, 20.68px);
+  @include mq('desktop', min) {
+    font-size: 18px;
+    line-height: 20.68px;
+  }
+}
+
+@mixin body() {
+  font-size: fs(14px, 16px);
+  line-height: fs(16.09px, 18.38 px);
+  @include mq('desktop', min) {
+    font-size: 16px;
+    line-height: 18.38px;
+  }
+}
+
+@mixin smallText () {
+  font-size: fs(10px, 12px);
+  line-height: fs(12px, 14.4px);
+  @include mq('desktop', min) {
+    font-size: 12px;
+    line-height: 14.4px;
+  }
+}
+
+ 
