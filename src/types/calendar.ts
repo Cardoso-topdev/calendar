@@ -1,14 +1,25 @@
-
-export interface IEventData {
-  [key: string]: {
-    tl?: number,
-    ev?: number,
-    cm?: number,
-    gu?: number,
-    li?: number,
-    lk?: number
-  } | string
+export type EventDataType = {
+  tl?: number;
+  ev?: number;
+  cm?: number;
+  gu?: number;
+  li?: number;
+  lk?: number;
 }
-export interface IEvent {
-  [key: string]: IEventData | string
+
+type EventDataListType = {
+  [key: string]: EventDataType;
+}
+
+type EventRange = {
+  first: string;
+  last: string;
+}
+
+export type EventType = EventDataListType & {
+  prev: string;
+}
+
+export type EventListType = EventRange & {
+  [key: string]: EventType;
 }

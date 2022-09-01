@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { IModalContext, ModalContext } from '../../../contexts';
-import { IEventData } from '../../../types/calendar';
+import { EventDataType } from '../../../types/calendar';
 import './dateCell.scss';
 
 interface IDateCellProps {
   date: string,
-  events: IEventData | undefined
+  events?: EventDataType
 };
 export const DateCell = ({ date, events }: IDateCellProps) => {
   const {setOpen} = useContext<IModalContext>(ModalContext);
@@ -18,24 +18,24 @@ export const DateCell = ({ date, events }: IDateCellProps) => {
       <div className="date-container__codes">
         <div className="date-container__codes__left">
           <span className="time-lapse">
-            <>{events?.tl}</>
+            {events?.tl}
           </span>
           <span className="comments">
-            <>{events?.cm}</>
+            {events?.cm}
           </span>
           <span className="guest-uploads">
-            <>{events?.gu}</>
+            {events?.gu}
           </span>
         </div>
         <div className="date-container__codes__right">
           <span className="events">
-            <>{events?.ev}</>
+            {events?.ev}
           </span>
           <span className="liked-by-me">
-            <>{events?.lk}</>
+            {events?.lk}
           </span>
           <span className="liked">
-            <>{events?.li}</>
+            {events?.li}
           </span>
         </div>
       </div> 

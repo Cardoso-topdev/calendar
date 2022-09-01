@@ -7,27 +7,27 @@ import {
 import { setYear } from 'date-fns/esm';
 import { WeekDays } from './week-days';
 import { Month } from './month';
-import { IEvent } from '../../types/calendar';
+import { EventListType } from '../../types/calendar';
 import prev from '../../assets/icons/prev.png';
 import next from '../../assets/icons/next.png';
 import './calendar.scss';
 
 interface ICalendarProps {
   years: Array<number>,
-  events: IEvent
+  events: EventListType
 }
 export const Calendar = ({ years, events }: ICalendarProps) => {
   const [currentMonth, setCurrentMonth] = useState<Date>(new Date());
 
   const nextMonth: () => void = () => {
     const nextMonth: Date = addMonths(currentMonth, 1);
-    if (nextMonth > new Date(events.last as string)) return;
+    if (nextMonth > new Date(events.last)) return;
     setCurrentMonth(nextMonth);
   }
 
   const prevMonth: () => void = () => {
     const prevMonth: Date = subMonths(currentMonth, 1);
-    if (prevMonth < new Date(events.first as string)) return;
+    if (prevMonth < new Date(events.first)) return;
     setCurrentMonth(prevMonth);
   }
 

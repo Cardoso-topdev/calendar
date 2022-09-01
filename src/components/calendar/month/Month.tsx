@@ -7,18 +7,17 @@ import {
   format,
   addDays
 } from 'date-fns';
-import { IEvent, IEventData } from '../../../types/calendar';
+import { EventListType, EventType } from '../../../types/calendar';
 import { DateCell } from '../date-cell';
 
 const dateFormat:string = "d";
-
 interface IMonthProps {
   month: Date,
-  events: IEvent
+  events: EventListType
 }
 export const Month = ({ month, events }: IMonthProps) => {
   const eventKey: string = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`;
-  const currentMonthEvents: IEventData = events[eventKey] as IEventData;
+  const currentMonthEvents: EventType = events[eventKey];
 
   const monthStart: Date = startOfMonth(month);
   const monthEnd: Date = endOfMonth(monthStart);
@@ -40,7 +39,7 @@ export const Month = ({ month, events }: IMonthProps) => {
             isDateInCurrentMonth
               ? <DateCell
                   date={formattedDate}
-                  events={currentMonthEvents?.[formattedDate as keyof typeof currentMonthEvents] as IEventData}
+                  events={currentMonthEvents?.[formattedDate]}
                 />
               : ''
           }
